@@ -366,10 +366,12 @@ impl Connection {
                 ServerCmd::NoOp => (),
 
                 ServerCmd::CdTrack { track, .. } => {
-                    music_player.play_track(match track_override {
+                    if let Err(e) = music_player.play_track(match track_override {
                         Some(t) => t as usize,
                         None => track as usize,
-                    })?;
+                    }) {
+                        console.println(format!("Could not play track {:}", e));
+                    }
                 }
 
                 ServerCmd::CenterPrint { text } => {
