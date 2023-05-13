@@ -23,7 +23,7 @@ num-derive = "0.3.3"
 png = "0.17.8"
 rand = { version = "0.8.5", features = ["small_rng"] }
 regex = "1.8.1"
-rodio = "0.15.0"
+rodio = "0.17.1"
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 shaderc = "0.8.2"
