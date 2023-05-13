@@ -32,7 +32,7 @@ structopt = "0.3.12"
 strum = "0.24.1"
 strum_macros = "0.24.3"
 thiserror = "1.0"
-uluru = "2"
+uluru = "3.0.0"
 wgpu = { version = "0.16.0", features = ["spirv"] }
 winit = "0.28.3"
 
