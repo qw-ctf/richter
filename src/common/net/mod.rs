@@ -168,6 +168,7 @@ bitflags! {
 }
 
 bitflags! {
+    #[derive(Clone, Copy, Debug, PartialEq)]
     pub struct ItemFlags: u32 {
         const SHOTGUN          = 0x00000001;
         const SUPER_SHOTGUN    = 0x00000002;
@@ -200,6 +201,7 @@ bitflags! {
 }
 
 bitflags! {
+    #[derive(Copy, Clone, Debug, PartialEq)]
     pub struct ButtonFlags: u8 {
         const ATTACK = 0x01;
         const JUMP = 0x02;
@@ -493,6 +495,7 @@ pub enum SignOnStage {
 }
 
 bitflags! {
+    #[derive(Copy, Clone, Debug, PartialEq)]
     pub struct EntityEffects: u8 {
         const BRIGHT_FIELD = 0b0001;
         const MUZZLE_FLASH = 0b0010;
