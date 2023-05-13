@@ -86,7 +86,7 @@ pub fn basic_arg(input: &str) -> nom::IResult<&str, &str> {
 
     match match_len {
         // TODO: more descriptive error?
-        0 => Err(nom::Err::Error((input, nom::error::ErrorKind::Many1))),
+        0 => Err(nom::Err::Error(nom::error::Error::new(input, nom::error::ErrorKind::Many1))),
         len => {
             let (matched, rest) = input.split_at(len);
             Ok((rest, matched))
