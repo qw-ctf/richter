@@ -134,7 +134,11 @@ impl Menu {
         let s = m.state.get().clone();
         if let MenuState::Active { index } = s {
             m.state.replace(MenuState::Active {
-                index: (index - 1) % m.items.len(),
+                index: if index == 0 {
+                    m.items.len() - 1
+                } else {
+                    (index - 1) % m.items.len()
+                },
             });
         } else {
             bail!("Selected menu is inactive (invariant violation)");
