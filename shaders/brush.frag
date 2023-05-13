@@ -44,19 +44,19 @@ layout(location = 0) out vec4 diffuse_attachment;
 layout(location = 1) out vec4 normal_attachment;
 layout(location = 2) out vec4 light_attachment;
 
+// This will likely break when proper uniformity analysis has been implemented,
+// https://github.com/gfx-rs/naga/issues/1744
+float sample_texture_index(uint i) {
+    return texture(sampler2D(u_lightmap_texture[i], u_lightmap_sampler), f_lightmap).r;
+}
+
 vec4 calc_light() {
     vec4 light = vec4(0.0, 0.0, 0.0, 0.0);
     for (int i = 0; i < 4 && f_lightmap_anim[i] != LIGHTMAP_ANIM_END; i++) {
-        float map = texture(
-            sampler2D(u_lightmap_texture[i], u_lightmap_sampler),
-            f_lightmap
-        ).r;
-
         // range [0, 4]
         float style = frame_uniforms.light_anim_frames[f_lightmap_anim[i]];
-        light[i] = map * style;
+        light[i] = sample_texture_index(i) * style;
     }
-
     return light;
 }
 
